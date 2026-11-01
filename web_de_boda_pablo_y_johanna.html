@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pablo & Johanna — 17.09.2027</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Playfair / Cormorant Garamond & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Canvas Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        crudo: {
+                            50: '#FDFCFA',
+                            100: '#F8F6F0',
+                            200: '#F0EBE1',
+                            300: '#E4DDD0',
+                            400: '#D5CBB9',
+                            800: '#5C5549',
+                            900: '#111111'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F8F6F0;
+            color: #111111;
+        }
+        .border-minimal {
+            border-color: rgba(17, 17, 17, 0.12);
+        }
+    </style>
+</head>
+<body class="bg-crudo-100 text-stone-900 font-sans antialiased selection:bg-stone-900 selection:text-white">
+
+    <!-- NAVEGACIÓN MINIMALISTA -->
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 bg-crudo-100/95 backdrop-blur-md border-b border-stone-300/60 py-4 transition-all">
+        <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
+            <a href="#hero" class="font-serif text-2xl md:text-3xl tracking-widest text-black font-semibold">P & J</a>
+            
+            <!-- Links Escritorio -->
+            <div class="hidden md:flex space-x-8 items-center text-xs tracking-widest uppercase font-medium text-stone-800">
+                <a href="#nuestra-historia" class="hover:text-black transition-colors">Nuestra Historia</a>
+                <a href="#el-dia" class="hover:text-black transition-colors">El Día</a>
+                <a href="#ubicaciones" class="hover:text-black transition-colors">Ubicaciones</a>
+                <a href="#autobuses" class="hover:text-black transition-colors">Autobuses</a>
+                <a href="#alojamiento" class="hover:text-black transition-colors">Detalles</a>
+                <a href="#rsvp" class="bg-black text-white px-5 py-2.5 rounded-full hover:bg-stone-800 transition-all font-semibold tracking-wider">Confirmar Asistencia</a>
+            </div>
+
+            <!-- Botón Menú Móvil -->
+            <button id="mobile-menu-btn" class="md:hidden text-black text-2xl focus:outline-none" aria-label="Abrir Menú">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Desplegable Móvil -->
+        <div id="mobile-menu" class="hidden md:hidden bg-crudo-100 border-b border-stone-300 px-6 py-6 space-y-4 text-xs tracking-widest uppercase font-medium text-stone-900">
+            <a href="#nuestra-historia" class="block hover:text-stone-600 mobile-link">Nuestra Historia</a>
+            <a href="#el-dia" class="block hover:text-stone-600 mobile-link">El Día</a>
+            <a href="#ubicaciones" class="block hover:text-stone-600 mobile-link">Ubicaciones</a>
+            <a href="#autobuses" class="block hover:text-stone-600 mobile-link">Autobuses</a>
+            <a href="#alojamiento" class="block hover:text-stone-600 mobile-link">Detalles</a>
+            <a href="#rsvp" class="block text-center bg-black text-white py-3 rounded-full font-semibold tracking-wider mobile-link">Confirmar Asistencia</a>
+        </div>
+    </nav>
+
+    <!-- PORTADA / HERO MINIMALISTA CON FOTO ADJUNTA -->
+    <header id="hero" class="min-h-screen pt-28 pb-16 px-4 flex items-center justify-center">
+        <div class="max-w-4xl mx-auto text-center space-y-8">
+            
+            <div class="space-y-3">
+                <span class="text-xs uppercase tracking-[0.3em] font-semibold text-stone-600 block">
+                    Nos casamos
+                </span>
+                <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-normal tracking-tight text-black">
+                    Pablo & Johanna
+                </h1>
+                <p class="font-serif italic text-2xl md:text-3xl text-stone-700 font-light pt-1">
+                    17 de Septiembre de 2027
+                </p>
+            </div>
+
+            <!-- FOTO PRINCIPAL EDITORIAL -->
+            <div class="relative max-w-xl mx-auto my-6 p-2 bg-white rounded-2xl shadow-sm border border-stone-200">
+                <div class="overflow-hidden rounded-xl aspect-[4/5] bg-stone-200">
+                    <img src="IMG_4821_2.jpg" 
+                         alt="Pablo y Johanna" 
+                         class="w-full h-full object-cover grayscale object-center hover:scale-105 transition-transform duration-700"
+                         onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80';">
+                </div>
+            </div>
+
+            <!-- Contador Regresivo Minimalista -->
+            <div class="pt-2">
+                <p class="text-xs uppercase tracking-widest text-stone-500 mb-4 font-medium">Cuenta atrás para el gran día</p>
+                <div id="countdown" class="grid grid-cols-4 gap-3 max-w-md mx-auto">
+                    <div class="bg-white border border-stone-300 p-3 rounded-xl text-center">
+                        <span id="days" class="block text-2xl md:text-3xl font-serif font-bold text-black">00</span>
+                        <span class="text-[10px] uppercase tracking-widest text-stone-500">Días</span>
+                    </div>
+                    <div class="bg-white border border-stone-300 p-3 rounded-xl text-center">
+                        <span id="hours" class="block text-2xl md:text-3xl font-serif font-bold text-black">00</span>
+                        <span class="text-[10px] uppercase tracking-widest text-stone-500">Horas</span>
+                    </div>
+                    <div class="bg-white border border-stone-300 p-3 rounded-xl text-center">
+                        <span id="minutes" class="block text-2xl md:text-3xl font-serif font-bold text-black">00</span>
+                        <span class="text-[10px] uppercase tracking-widest text-stone-500">Min</span>
+                    </div>
+                    <div class="bg-white border border-stone-300 p-3 rounded-xl text-center">
+                        <span id="seconds" class="block text-2xl md:text-3xl font-serif font-bold text-black">00</span>
+                        <span class="text-[10px] uppercase tracking-widest text-stone-500">Seg</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botones de Acción -->
+            <div class="pt-4 flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#rsvp" class="bg-black hover:bg-stone-800 text-white font-medium text-xs uppercase tracking-widest px-8 py-4 rounded-full transition-all shadow-sm">
+                    Confirmar Asistencia
+                </a>
+                <a href="#el-dia" class="bg-transparent hover:bg-stone-200 text-black border border-stone-400 font-medium text-xs uppercase tracking-widest px-8 py-4 rounded-full transition-all">
+                    Ver Programa
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- BIENVENIDA Y MENSAJE -->
+    <section id="nuestra-historia" class="py-20 px-6 max-w-3xl mx-auto text-center border-t border-stone-300">
+        <span class="text-xs uppercase tracking-[0.2em] font-semibold text-stone-500 block mb-3">Bienvenidos</span>
+        <h2 class="font-serif text-4xl md:text-5xl text-black font-normal mb-8">Queremos celebrar con vosotros</h2>
+        <p class="text-base md:text-lg text-stone-800 leading-relaxed font-light mb-6">
+            Después de compartir tantos momentos inolvidables, nos hace una ilusión inmensa dar este paso y reunir a las personas más importantes de nuestras vidas.
+        </p>
+        <p class="font-serif italic text-xl md:text-2xl text-stone-900 border-l-2 border-black pl-4 my-8 text-left max-w-lg mx-auto">
+            "Prepárate para un día lleno de emociones, abrazos apretados, buena comida y muchas ganas de celebrar."
+        </p>
+    </section>
+
+    <!-- PROGRAMA DEL DÍA -->
+    <section id="el-dia" class="py-20 bg-crudo-50 border-y border-stone-300 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-xs uppercase tracking-[0.25em] font-semibold text-stone-500">Itinerario</span>
+                <h2 class="font-serif text-4xl md:text-5xl font-normal text-black mt-2">El Programa del Día</h2>
+                <div class="w-12 h-[1px] bg-black mx-auto mt-4"></div>
+            </div>
+
+            <div class="space-y-8 max-w-2xl mx-auto">
+                <!-- Timeline Event 1 -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl border border-stone-300 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div class="space-y-1">
+                        <span class="text-xs font-bold uppercase tracking-widest bg-stone-100 text-black px-3 py-1 rounded-md inline-block">12:30 h</span>
+                        <h3 class="font-serif text-2xl font-bold text-black pt-2">Ceremonia Religiosa</h3>
+                        <p class="text-stone-700 text-sm">Iglesia de San Miguel Arcángel, Puente Viesgo</p>
+                        <p class="text-stone-500 text-xs italic">Os rogamos llegar con un margen de 15 minutos.</p>
+                    </div>
+                    <div class="text-3xl text-black self-start md:self-center">
+                        <i class="fa-solid fa-church"></i>
+                    </div>
+                </div>
+
+                <!-- Timeline Event 2 -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl border border-stone-300 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div class="space-y-1">
+                        <span class="text-xs font-bold uppercase tracking-widest bg-stone-100 text-black px-3 py-1 rounded-md inline-block">13:45 h</span>
+                        <h3 class="font-serif text-2xl font-bold text-black pt-2">Salida de Autobuses</h3>
+                        <p class="text-stone-700 text-sm">Traslado de invitados hacia La Huerta de Cubas</p>
+                    </div>
+                    <div class="text-3xl text-black self-start md:self-center">
+                        <i class="fa-solid fa-bus"></i>
+                    </div>
+                </div>
+
+                <!-- Timeline Event 3 -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl border border-stone-300 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div class="space-y-1">
+                        <span class="text-xs font-bold uppercase tracking-widest bg-stone-100 text-black px-3 py-1 rounded-md inline-block">14:30 h</span>
+                        <h3 class="font-serif text-2xl font-bold text-black pt-2">Cóctel de Bienvenida</h3>
+                        <p class="text-stone-700 text-sm">Jardines de La Huerta de Cubas</p>
+                        <p class="text-stone-500 text-xs">Aperitivos, bebidas y música al aire libre.</p>
+                    </div>
+                    <div class="text-3xl text-black self-start md:self-center">
+                        <i class="fa-solid fa-wine-glass"></i>
+                    </div>
+                </div>
+
+                <!-- Timeline Event 4 -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl border border-stone-300 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div class="space-y-1">
+                        <span class="text-xs font-bold uppercase tracking-widest bg-stone-100 text-black px-3 py-1 rounded-md inline-block">16:30 h</span>
+                        <h3 class="font-serif text-2xl font-bold text-black pt-2">Banquete</h3>
+                        <p class="text-stone-700 text-sm">Salón principal de La Huerta de Cubas</p>
+                    </div>
+                    <div class="text-3xl text-black self-start md:self-center">
+                        <i class="fa-solid fa-utensils"></i>
+                    </div>
+                </div>
+
+                <!-- Timeline Event 5 -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl border border-stone-300 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div class="space-y-1">
+                        <span class="text-xs font-bold uppercase tracking-widest bg-stone-100 text-black px-3 py-1 rounded-md inline-block">19:00 h — 01:00 h</span>
+                        <h3 class="font-serif text-2xl font-bold text-black pt-2">Fiesta & Barra Libre</h3>
+                        <p class="text-stone-700 text-sm">Música y fin de fiesta a la 01:00 h</p>
+                    </div>
+                    <div class="text-3xl text-black self-start md:self-center">
+                        <i class="fa-solid fa-music"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- UBICACIONES MINIMALISTAS -->
+    <section id="ubicaciones" class="py-20 px-6 max-w-5xl mx-auto">
+        <div class="text-center mb-16">
+            <span class="text-xs uppercase tracking-[0.25em] font-semibold text-stone-500">Dónde nos vemos</span>
+            <h2 class="font-serif text-4xl md:text-5xl font-normal text-black mt-2">Ubicaciones</h2>
+            <div class="w-12 h-[1px] bg-black mx-auto mt-4"></div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- Ceremonia Card -->
+            <div class="bg-white p-8 rounded-2xl border border-stone-300 shadow-sm flex flex-col justify-between space-y-6">
+                <div class="space-y-3">
+                    <span class="text-[10px] uppercase font-bold tracking-widest text-stone-500 border border-stone-300 px-3 py-1 rounded-full">Ceremonia 12:30h</span>
+                    <h3 class="font-serif text-3xl font-bold text-black">Iglesia de San Miguel Arcángel</h3>
+                    <p class="text-sm font-semibold text-stone-800">
+                        <i class="fa-solid fa-location-dot mr-1"></i> Puente Viesgo, Cantabria
+                    </p>
+                    <p class="text-stone-600 text-sm leading-relaxed pt-2">
+                        Situada en un entorno natural precioso. Hay zonas de aparcamiento cercanas habilitadas para vuestra comodidad.
+                    </p>
+                </div>
+                <div>
+                    <a href="https://maps.google.com/?q=Iglesia+de+San+Miguel+Arcangel+Puente+Viesgo" target="_blank" rel="noopener noreferrer" 
+                       class="inline-flex items-center justify-center w-full bg-black text-white hover:bg-stone-800 font-medium text-xs uppercase tracking-widest py-3 px-4 rounded-xl transition-all gap-2">
+                        <i class="fa-solid fa-map-pin"></i> Ver en Google Maps
+                    </a>
+                </div>
+            </div>
+
+            <!-- Banquete Card -->
+            <div class="bg-white p-8 rounded-2xl border border-stone-300 shadow-sm flex flex-col justify-between space-y-6">
+                <div class="space-y-3">
+                    <span class="text-[10px] uppercase font-bold tracking-widest text-stone-500 border border-stone-300 px-3 py-1 rounded-full">Banquete 14:30h</span>
+                    <h3 class="font-serif text-3xl font-bold text-black">La Huerta de Cubas</h3>
+                    <p class="text-sm font-semibold text-stone-800">
+                        <i class="fa-solid fa-location-dot mr-1"></i> Cubas, Cantabria
+                    </p>
+                    <p class="text-stone-600 text-sm leading-relaxed pt-2">
+                        Finca con amplios jardines y espacios mágicos diseñados para disfrutar de la celebración, el banquete y el baile.
+                    </p>
+                </div>
+                <div>
+                    <a href="https://maps.google.com/?q=La+Huerta+de+Cubas+Cantabria" target="_blank" rel="noopener noreferrer" 
+                       class="inline-flex items-center justify-center w-full bg-black text-white hover:bg-stone-800 font-medium text-xs uppercase tracking-widest py-3 px-4 rounded-xl transition-all gap-2">
+                        <i class="fa-solid fa-map-pin"></i> Ver en Google Maps
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AUTOBUSES Y LOGÍSTICA -->
+    <section id="autobuses" class="py-20 bg-crudo-200 border-y border-stone-300 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="text-xs uppercase tracking-[0.25em] font-semibold text-stone-600">Transporte</span>
+                <h2 class="font-serif text-4xl md:text-5xl font-normal text-black mt-2">Servicio de Autobuses</h2>
+                <p class="text-stone-700 max-w-xl mx-auto mt-3 text-sm">
+                    Queremos que disfrutéis sin preocuparos por el coche. Pondremos a vuestra disposición autobuses de ida y vuelta.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Ida -->
+                <div class="bg-white p-6 rounded-2xl border border-stone-300 space-y-4">
+                    <div class="flex items-center space-x-3 text-black">
+                        <i class="fa-solid fa-bus text-2xl"></i>
+                        <h3 class="font-serif text-2xl font-bold">Autobús de Ida</h3>
+                    </div>
+                    <ul class="space-y-3 text-sm text-stone-800">
+                        <li class="flex items-start">
+                            <span class="font-bold mr-2 text-black">11:30 h</span>
+                            <span>Salida desde Santander y Torrelavega.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="font-bold mr-2 text-black">12:15 h</span>
+                            <span>Llegada a la Iglesia en Puente Viesgo.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="font-bold mr-2 text-black">13:45 h</span>
+                            <span>Traslado hacia La Huerta de Cubas.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Vuelta -->
+                <div class="bg-white p-6 rounded-2xl border border-stone-300 space-y-4">
+                    <div class="flex items-center space-x-3 text-black">
+                        <i class="fa-solid fa-route text-2xl"></i>
+                        <h3 class="font-serif text-2xl font-bold">Autobús de Vuelta</h3>
+                    </div>
+                    <ul class="space-y-3 text-sm text-stone-800">
+                        <li class="flex items-start">
+                            <span class="font-bold mr-2 text-black">22:30 h</span>
+                            <span>Primer autobús de retorno (para quienes deseen retirarse antes).</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="font-bold mr-2 text-black">01:15 h</span>
+                            <span>Autobús fin de fiesta con paradas en Torrelavega y Santander.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <p class="text-center text-xs text-stone-600 italic mt-6">
+                * Por favor, indícanos en el formulario RSVP si utilizarás el servicio de autobús.
+            </p>
+        </div>
+    </section>
+
+    <!-- DETALLES ADICIONALES (DRESS CODE & ALOJAMIENTO) -->
+    <section id="alojamiento" class="py-20 px-6 max-w-4xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-white p-8 rounded-2xl border border-stone-300 space-y-3">
+                <div class="text-2xl text-black">
+                    <i class="fa-solid fa-user-tie"></i>
+                </div>
+                <h3 class="font-serif text-2xl font-bold text-black">Código de Vestimenta</h3>
+                <p class="text-xs uppercase font-bold tracking-wider text-stone-500">Traje & Vestido de Cóctel</p>
+                <p class="text-stone-700 text-sm leading-relaxed">
+                    Dado que parte del cóctel se celebrará en los jardines de La Huerta de Cubas, os aconsejamos optar por calzado cómodo o tacones adecuados para césped.
+                </p>
+            </div>
+
+            <div class="bg-white p-8 rounded-2xl border border-stone-300 space-y-3">
+                <div class="text-2xl text-black">
+                    <i class="fa-solid fa-hotel"></i>
+                </div>
+                <h3 class="font-serif text-2xl font-bold text-black">Alojamiento Recomendado</h3>
+                <p class="text-stone-700 text-sm leading-relaxed">
+                    Si venís de fuera, os sugerimos alojaros en los alrededores de **Puente Viesgo**, **Solares/Cubas** o en la ciudad de **Santander**.
+                </p>
+                <ul class="text-xs text-stone-600 space-y-1 pt-1">
+                    <li>• Gran Hotel Balneario de Puente Viesgo</li>
+                    <li>• Posadas y hoteles rurales en la zona de Cubas</li>
+                    <li>• Hoteles en Santander (conectados por autobús)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULARIO RSVP MINIMALISTA -->
+    <section id="rsvp" class="py-20 bg-crudo-50 border-t border-stone-300 px-6">
+        <div class="max-w-2xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="text-xs uppercase tracking-[0.25em] font-semibold text-stone-500">R.S.V.P.</span>
+                <h2 class="font-serif text-4xl md:text-5xl font-normal text-black mt-2">Confirmación de Asistencia</h2>
+                <p class="text-stone-600 text-sm mt-3">Agradecemos tu confirmación antes del <strong>1 de Agosto de 2027</strong></p>
+            </div>
+
+            <!-- Formulario sobre fondo blanco pulcro -->
+            <div class="bg-white border border-stone-300 p-8 md:p-10 rounded-3xl shadow-sm">
+                
+                <form id="rsvp-form" class="space-y-6">
+                    <!-- Nombre y Apellidos -->
+                    <div>
+                        <label for="fullName" class="block text-xs uppercase tracking-wider font-bold text-black mb-2">Nombre y Apellidos *</label>
+                        <input type="text" id="fullName" required placeholder="Tu nombre completo" 
+                               class="w-full bg-crudo-100 border border-stone-300 rounded-xl px-4 py-3.5 text-stone-900 placeholder-stone-400 focus:outline-none focus:border-black transition-colors text-sm">
+                    </div>
+
+                    <!-- Asistencia -->
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider font-bold text-black mb-2">¿Asistirás a la boda? *</label>
+                        <div class="grid grid-cols-2 gap-4">
+                            <label class="cursor-pointer border border-stone-300 rounded-xl p-3 flex items-center justify-center space-x-2 bg-crudo-50 hover:border-black transition-all">
+                                <input type="radio" name="attending" value="Yes" class="accent-black" checked onchange="toggleCompanionField(true)">
+                                <span class="text-xs uppercase font-bold text-black">Sí, asistiré</span>
+                            </label>
+                            <label class="cursor-pointer border border-stone-300 rounded-xl p-3 flex items-center justify-center space-x-2 bg-crudo-50 hover:border-black transition-all">
+                                <input type="radio" name="attending" value="No" class="accent-black" onchange="toggleCompanionField(false)">
+                                <span class="text-xs uppercase font-bold text-stone-600">No podré ir</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Campos Condicionales -->
+                    <div id="attending-fields" class="space-y-6">
+                        <!-- Acompañantes -->
+                        <div>
+                            <label for="companions" class="block text-xs uppercase tracking-wider font-bold text-black mb-2">
+                                Acompañante(s) (Nombre completo de tu pareja/familia)
+                            </label>
+                            <input type="text" id="companions" placeholder="Ej: Carlos Pérez" 
+                                   class="w-full bg-crudo-100 border border-stone-300 rounded-xl px-4 py-3.5 text-stone-900 placeholder-stone-400 focus:outline-none focus:border-black transition-colors text-sm">
+                        </div>
+
+                        <!-- Intolerancias / Alergias -->
+                        <div>
+                            <label for="dietary" class="block text-xs uppercase tracking-wider font-bold text-black mb-2">
+                                Alergias, Intolerancias o Menús Especiales
+                            </label>
+                            <textarea id="dietary" rows="2" placeholder="Celíaco, vegetariano, alergias..." 
+                                      class="w-full bg-crudo-100 border border-stone-300 rounded-xl px-4 py-3.5 text-stone-900 placeholder-stone-400 focus:outline-none focus:border-black transition-colors text-sm"></textarea>
+                        </div>
+
+                        <!-- Autobús -->
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider font-bold text-black mb-2">Uso de Autobús</label>
+                            <select id="bus" class="w-full bg-crudo-100 border border-stone-300 rounded-xl px-4 py-3.5 text-stone-900 focus:outline-none focus:border-black transition-colors text-sm">
+                                <option value="No">No utilizaré el autobús</option>
+                                <option value="Si - Ida y Vuelta (Santander)">Sí, Ida y Vuelta desde Santander</option>
+                                <option value="Si - Ida y Vuelta (Torrelavega)">Sí, Ida y Vuelta desde Torrelavega</option>
+                                <option value="Solo Ida">Solo viaje de Ida</option>
+                                <option value="Solo Vuelta">Solo viaje de Vuelta</option>
+                            </select>
+                        </div>
+
+                        <!-- Canción Sugerida -->
+                        <div>
+                            <label for="song" class="block text-xs uppercase tracking-wider font-bold text-black mb-2">
+                                🎵 Canción indispensable para la fiesta
+                            </label>
+                            <input type="text" id="song" placeholder="Título y Artista" 
+                                   class="w-full bg-crudo-100 border border-stone-300 rounded-xl px-4 py-3.5 text-stone-900 placeholder-stone-400 focus:outline-none focus:border-black transition-colors text-sm">
+                        </div>
+                    </div>
+
+                    <!-- Mensaje -->
+                    <div>
+                        <label for="message" class="block text-xs uppercase tracking-wider font-bold text-black mb-2">
+                            Mensaje para Pablo y Johanna
+                        </label>
+                        <textarea id="message" rows="3" placeholder="Escribe un mensaje para los novios..." 
+                                  class="w-full bg-crudo-100 border border-stone-300 rounded-xl px-4 py-3.5 text-stone-900 placeholder-stone-400 focus:outline-none focus:border-black transition-colors text-sm"></textarea>
+                    </div>
+
+                    <!-- Botón Enviar -->
+                    <button type="submit" 
+                            class="w-full bg-black hover:bg-stone-800 text-white font-bold text-xs uppercase tracking-widest py-4 rounded-xl shadow-sm transition-all">
+                        Enviar Respuesta
+                    </button>
+                </form>
+
+                <!-- Confirmación de Envío -->
+                <div id="confirmation-message" class="hidden text-center py-8 space-y-6">
+                    <div class="w-16 h-16 bg-stone-100 border border-black text-black rounded-full flex items-center justify-center mx-auto text-2xl">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <h3 class="font-serif text-3xl font-normal text-black">¡Muchas Gracias!</h3>
+                    <p class="text-stone-700 text-base leading-relaxed max-w-md mx-auto">
+                        Hemos recibido tu respuesta. Nos hace muchísima ilusión poder compartir este día contigo.
+                    </p>
+                    <div class="p-3 bg-crudo-100 border border-stone-300 rounded-xl inline-block text-xs uppercase tracking-wider font-semibold text-black">
+                        17.09.2027 • Puente Viesgo & Cubas
+                    </div>
+                    <div>
+                        <button onclick="resetForm()" class="text-xs text-stone-500 hover:text-black underline mt-4 block mx-auto">
+                            Enviar otra respuesta o modificar
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- REGALOS / IBAN -->
+    <section class="py-16 px-6 bg-crudo-100 border-t border-stone-300 text-center">
+        <div class="max-w-xl mx-auto space-y-4">
+            <div class="text-black text-2xl">
+                <i class="fa-solid fa-gift"></i>
+            </div>
+            <h3 class="font-serif text-3xl font-normal text-black">Vuestra presencia es nuestro mejor regalo</h3>
+            <p class="text-stone-700 text-sm leading-relaxed">
+                Si además queréis hacernos un detalle para nuestra nueva etapa juntos, ponemos a vuestra disposición nuestro número de cuenta:
+            </p>
+            
+            <div class="bg-white border border-stone-300 p-4 rounded-2xl max-w-md mx-auto shadow-sm flex items-center justify-between">
+                <div class="text-left">
+                    <span class="text-[10px] text-stone-500 block uppercase font-bold tracking-widest">Número de Cuenta / IBAN</span>
+                    <span id="iban-text" class="font-mono text-sm font-bold text-black">ES12 3456 7890 1234 5678 9012</span>
+                </div>
+                <button onclick="copyIBAN()" id="copy-btn" class="bg-black hover:bg-stone-800 text-white text-xs px-4 py-2.5 rounded-lg font-semibold tracking-wider transition-colors flex items-center gap-2">
+                    <i class="fa-solid fa-copy"></i>
+                    <span>Copiar</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER MINIMALISTA -->
+    <footer class="py-10 bg-white border-t border-stone-300 text-stone-600 text-center text-xs space-y-2">
+        <p class="font-serif text-xl tracking-widest text-black">Pablo & Johanna</p>
+        <p class="text-stone-500 uppercase tracking-widest text-[10px]">17 de Septiembre de 2027 • Cantabria</p>
+    </footer>
+
+    <!-- LÓGICA JAVASCRIPT -->
+    <script>
+        // 1. Menú Móvil
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // 2. Contador Regresivo
+        const weddingDate = new Date('2027-09-17T12:30:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            if (distance < 0) {
+                document.getElementById('countdown').innerHTML = '<div class="col-span-4 text-xl font-serif text-black">¡Llegó el gran día! 🎉</div>';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerText = days < 10 ? '0' + days : days;
+            document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
+            document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // 3. Campos condicionales del RSVP
+        function toggleCompanionField(isAttending) {
+            const fields = document.getElementById('attending-fields');
+            if (isAttending) {
+                fields.classList.remove('hidden');
+            } else {
+                fields.classList.add('hidden');
+            }
+        }
+
+        // 4. Envío del Formulario
+        const rsvpForm = document.getElementById('rsvp-form');
+        const confirmationMessage = document.getElementById('confirmation-message');
+
+        rsvpForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Confeti elegante
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 80,
+                    spread: 60,
+                    origin: { y: 0.6 },
+                    colors: ['#111111', '#5C5549', '#D5CBB9']
+                });
+            }
+
+            rsvpForm.classList.add('hidden');
+            confirmationMessage.classList.remove('hidden');
+        });
+
+        function resetForm() {
+            rsvpForm.reset();
+            toggleCompanionField(true);
+            confirmationMessage.classList.add('hidden');
+            rsvpForm.classList.remove('hidden');
+        }
+
+        // 5. Copiar IBAN
+        function copyIBAN() {
+            const ibanText = document.getElementById('iban-text').innerText;
+            const btn = document.getElementById('copy-btn');
+            
+            const tempInput = document.createElement('input');
+            tempInput.value = ibanText;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            btn.innerHTML = '<i class="fa-solid fa-check"></i> Copiado';
+            btn.classList.remove('bg-black', 'hover:bg-stone-800');
+            btn.classList.add('bg-stone-700');
+
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fa-solid fa-copy"></i> Copiar';
+                btn.classList.remove('bg-stone-700');
+                btn.classList.add('bg-black', 'hover:bg-stone-800');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
